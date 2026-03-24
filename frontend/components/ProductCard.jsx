@@ -3,7 +3,6 @@ function ProductCard({ product }) {
   return (
     <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden">
       
-      {/* Image */}
       <div className="w-full h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
         <img
           src={`${BASEURL}${product.image}`}
@@ -12,7 +11,6 @@ function ProductCard({ product }) {
         />
       </div>
 
-      {/* Content */}
       <div className="p-4 flex flex-col gap-2">
         <h2 className="text-lg font-semibold text-gray-800 line-clamp-1">
           {product.name}
