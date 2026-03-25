@@ -41,25 +41,37 @@ function ProductList() {
     }
    if (error) return <p className="text-center text-red-500">{error}</p>;
 
-  return (
-    <div className="min-h-screen bg-gray-100">
-        <h1 className="text-3xl font-bold text-center py-6 shadow bg-white">
-        Product List
+ return (
+  <div className="min-h-screen bg-gray-50/50">
+    {/* Sticky Header with Glassmorphism */}
+    <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-md border-b border-gray-100 mb-8">
+      <div className="max-w-7xl mx-auto px-6 py-4">
+        <h1 className="text-4xl font-black text-gray-900 tracking-tight">
+          Featured <span className="text-blue-600">Products</span>
         </h1>
+      </div>
+    </header>
 
-        <div className="max-w-7xl mx-auto p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.length > 0 ? (
-            products.map((product) => (
+    <main className="max-w-7xl mx-auto px-6 pb-20">
+      {products.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {products.map((product) => (
             <ProductCard key={product.id} product={product} />
-            ))
-        ) : (
-            <p className="text-center col-span-full text-gray-500">
-            No products found
-            </p>
-        )}
+          ))}
         </div>
-    </div>
-    );
+      ) : (
+        /* Enhanced Empty State */
+        <div className="flex flex-col items-center justify-center py-32 bg-white rounded-[2.5rem] border-2 border-dashed border-gray-200">
+          <div className="bg-gray-100 p-4 rounded-full mb-4">
+             <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-600 rounded-full animate-spin" />
+          </div>
+          <h3 className="text-xl font-bold text-gray-800">No products found</h3>
+          <p className="text-gray-500 mt-1">Try adjusting your filters or check back later.</p>
+        </div>
+      )}
+    </main>
+  </div>
+);
 }
 
 export default ProductList;
