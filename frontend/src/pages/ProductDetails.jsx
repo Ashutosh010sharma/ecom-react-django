@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
- 
+import {useCart} from "../context/CartContext"; 
+
 function ProductDetails() {
   const { id } = useParams();
   const BASEURL = import.meta.env.VITE_DJANGO_BASE_URL;
@@ -9,6 +10,7 @@ function ProductDetails() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const {addToCart} = useCart();
 
   useEffect(() => {
     fetch(`${BASEURL}/api/products/${id}`)
@@ -106,7 +108,7 @@ function ProductDetails() {
 
         {/* Fixed Bottom Action */}
         <div className="mt-8 pt-6 border-t border-gray-50">
-          <button className="w-full bg-gray-900 hover:bg-blue-600 text-white py-4 rounded-2xl text-lg font-bold transition-all active:scale-95 shadow-xl shadow-gray-200">
+          <button onClick={()=> addToCart(product)} className="w-full bg-gray-900 hover:bg-blue-600 text-white py-4 rounded-2xl text-lg font-bold transition-all active:scale-95 shadow-xl shadow-gray-200">
             Add to Cart
           </button>
         </div>
