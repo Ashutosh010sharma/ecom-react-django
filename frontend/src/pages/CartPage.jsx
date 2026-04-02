@@ -1,10 +1,12 @@
 import { useCart } from "../context/CartContext";
 
 function Cartpage() {
-    const { cartItems, removeFromCart, updateQuantity } = useCart();
-    const total = cartItems.reduce(
-        (acc, item) => acc + item.price * item.quantity, 0
-    );
+    const { cartItems,total, removeFromCart, updateQuantity } = useCart();
+    // const total = cartItems.reduce(
+    //     (acc, item) => acc + item.price * item.quantity, 0
+    // );
+    console.log("cart items:",cartItems);
+    const BASEURL = import.meta.env.VITE_DJANGO_BASE_URL;
 
     return (
         <div className="min-h-screen bg-gray-50/50 py-12 px-6">
@@ -27,12 +29,15 @@ function Cartpage() {
                                 <div key={item.id} className="bg-white p-6 rounded-[2rem] border border-gray-100 shadow-sm flex items-center gap-6">
                                     {/* Small Image Placeholder (if available) */}
                                     <div className="w-24 h-24 bg-gray-50 rounded-2xl flex-shrink-0 overflow-hidden">
-                                        <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
+                                        { item.product_image && (
+                                         <img src={`${BASEURL}${item.product_image}`} alt={item.product_name} className="w-full h-full object-contain" />
+                                        )}
+                                        
                                     </div>
 
                                     <div className="flex-1">
-                                        <h2 className="text-xl font-bold text-gray-900">{item.name}</h2>
-                                        <p className="text-blue-600 font-black">₹{item.price}</p>
+                                        <h2 className="text-xl font-bold text-gray-900">{item.product_name}</h2>
+                                        <p className="text-blue-600 font-black">₹{item.product_price}</p>
                                     </div>
 
                                     {/* Quantity Controls */}

@@ -108,7 +108,7 @@ function ProductDetails() {
 
         {/* Fixed Bottom Action */}
         <div className="mt-8 pt-6 border-t border-gray-50">
-          <button onClick={()=> addToCart(product)} className="w-full bg-gray-900 hover:bg-blue-600 text-white py-4 rounded-2xl text-lg font-bold transition-all active:scale-95 shadow-xl shadow-gray-200">
+          <button onClick={()=> addToCart(product.id)} className="w-full bg-gray-900 hover:bg-blue-600 text-white py-4 rounded-2xl text-lg font-bold transition-all active:scale-95 shadow-xl shadow-gray-200">
             Add to Cart
           </button>
         </div>
