@@ -1,4 +1,5 @@
 import { useCart } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 function Cartpage() {
     const { cartItems,total, removeFromCart, updateQuantity } = useCart();
@@ -86,11 +87,16 @@ function Cartpage() {
                                         <span className="text-gray-900 font-bold">Total Amount</span>
                                         <span className="text-3xl font-black text-gray-900">₹{total}</span>
                                     </div>
+                                    <Link 
+                                    to="/checkout" 
+                                    className="mt-8 w-full bg-gray-900 text-white py-5 rounded-2xl font-bold text-lg hover:bg-blue-600 transition-all active:scale-[0.98] shadow-xl shadow-gray-200 flex items-center justify-center gap-2 group"
+                                    >
+                                    Proceed to Checkout
+                                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                                    </Link>
                                 </div>
 
-                                <button className="w-full mt-8 bg-gray-900 text-white py-5 rounded-2xl font-bold text-lg hover:bg-blue-600 transition-all active:scale-95 shadow-lg shadow-gray-200">
-                                    Checkout Now
-                                </button>
+                
                             </div>
                         </div>
 
